@@ -7,7 +7,6 @@ variable "release_name" {
 variable "namespace" {
   description = "The namespace where the Helm release will be installed."
   type        = string
-  default     = "ccp-core"
 }
 
 variable "chart_version" {

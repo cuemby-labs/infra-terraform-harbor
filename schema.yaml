@@ -5,6 +5,8 @@ components:
   schemas:
     variables:
       type: object
+      required:
+      - namespace
       properties:
         release_name:
           title: Release Name
@@ -18,7 +20,6 @@ components:
           title: Namespace
           type: string
           description: The namespace where the Helm release will be installed.
-          default: ccp-core
           x-walrus-ui:
             group: Basic
             order: 2

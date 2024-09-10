@@ -1,4 +1,12 @@
-resource "helm_release" "ingress_nginx" {
+resource "kubernetes_namespace" "harbor" {
+  metadata {
+    name = var.namespace
+  }
+  lifecycle {
+    ignore_changes = [metadata]
+  }
+}
+resource "helm_release" "harbor" {
   name       = var.release_name
   namespace  = var.namespace
 

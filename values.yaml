@@ -29,21 +29,3 @@ expose:
       notarySecretName: "notary-core-cuemby-net"
 externalURL: https://harbor.core.cuemby.net
 harborAdminPassword: "A66x5R$h@4n!EMsg"
-persistence:
-  persistentVolumeClaim:
-    database:
-      accessMode: ReadWriteOnce
-      size: 10Gi
-    jobservice:
-      jobLog:
-        accessMode: ReadWriteOnce
-        size: 10Gi
-    redis:
-      accessMode: ReadWriteOnce
-      size: 10Gi
-    registry:
-      accessMode: ReadWriteOnce
-      size: 50Gi
-    trivy:
-      accessMode: ReadWriteOnce
-      size: 50Gi

@@ -1,11 +1,3 @@
-resource "kubernetes_namespace" "this" {
-  metadata {
-    name = var.namespace
-  }
-  lifecycle {
-    ignore_changes = [metadata]
-  }
-}
 resource "helm_release" "this" {
   name       = var.release_name
   namespace  = var.namespace

@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "harbor" {
+resource "kubernetes_namespace" "this" {
   metadata {
     name = var.namespace
   }
@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "harbor" {
     ignore_changes = [metadata]
   }
 }
-resource "helm_release" "harbor" {
+resource "helm_release" "this" {
   name       = var.release_name
   namespace  = var.namespace
 

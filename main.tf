@@ -13,11 +13,19 @@ resource "helm_release" "this" {
   # Ingress values
   values = [
     templatefile("${path.module}/values.yaml.tpl", {
-      harbor_admin_passwd = var.harbor_admin_password
-      domain_name         = var.domain_name
-      dash_domain_name    = var.dash_domain_name
-      environment         = var.environment
+      harbor_admin_password = var.harbor_admin_password,
+      domain_name           = var.domain_name,
+      dash_domain_name      = var.dash_domain_name,
+      environment           = var.environment
 
     })
   ]
+}
+
+#
+# Walrus information
+#
+
+locals {
+  context = var.context
 }

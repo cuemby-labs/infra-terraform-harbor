@@ -25,7 +25,7 @@ expose:
     enabled: true
     certSource: secret
     secret:
-      secretName: "harbor-${dash_domain_name}"
-      notarySecretName: "notary-${dash_domain_name}"
+      secretName: "harbor-${environment}-${dash_domain_name}"
+      notarySecretName: "notary-${environment}-${dash_domain_name}"
 externalURL: https://harbor.${environment}.${domain_name}
 harborAdminPassword: ${harbor_admin_password}

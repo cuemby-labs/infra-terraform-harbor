@@ -11,6 +11,7 @@ variable "release_name" {
 variable "namespace" {
   description = "The namespace where the Helm release will be installed."
   type        = string
+  default     = "harbor-system"
 }
 
 variable "chart_version" {
@@ -42,4 +43,31 @@ variable "dash_domain_name" {
 variable "environment" {
   type        = string
   description = "environment name, e.g. 'dev', 'stg' or 'prod'"
+  default     = "dev"
+}
+
+#
+# Walrus Contextual Fields
+#
+
+variable "context" {
+  description = <<-EOF
+Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
+
+Examples:
+```
+context:
+  project:
+    name: string
+    id: string
+  environment:
+    name: string
+    id: string
+  resource:
+    name: string
+    id: string
+```
+EOF
+  type        = map(any)
+  default     = {}
 }

@@ -1,3 +1,7 @@
+#
+# Harbor helmchart resources
+#
+
 resource "helm_release" "this" {
   name       = var.release_name
   namespace  = var.namespace
@@ -6,14 +10,14 @@ resource "helm_release" "this" {
   chart      = "harbor"
   version    = var.chart_version
 
-  values     = [file("${path.module}/values.yaml")]
-}
-locals {
-  context = var.context
-}
+  # Ingress values
+  values = [
+    templatefile("${path.module}/values.yaml.tpl", {
+      harbor_admin_passwd = var.harbor_admin_password
+      domain_name         = var.domain_name
+      dash_domain_name    = var.dash_domain_name
+      environment         = var.environment
 
-module "submodule" {
-  source = "./modules/submodule"
-
-  message = "Hello, submodule"
+    })
+  ]
 }

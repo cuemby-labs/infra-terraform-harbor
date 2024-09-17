@@ -6,6 +6,10 @@ components:
     variables:
       type: object
       required:
+      - dash_domain_name
+      - domain_name
+      - environment
+      - harbor_admin_password
       - namespace
       properties:
         release_name:
@@ -31,6 +35,36 @@ components:
           x-walrus-ui:
             group: Basic
             order: 3
+        harbor_admin_password:
+          title: Harbor Admin Password
+          type: string
+          description: Admin password for Harbor
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        domain_name:
+          title: Domain Name
+          type: string
+          description: domain name for Harbor, e.g. 'domainname.com'
+          x-walrus-ui:
+            group: Basic
+            order: 5
+        dash_domain_name:
+          title: Dash Domain Name
+          type: string
+          description: domain name with dash, e.g. 'domainname-com'
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        environment:
+          title: Environment
+          type: string
+          description: environment name, e.g. 'dev', 'stg' or 'prod'
+          x-walrus-ui:
+            group: Basic
+            order: 7
       x-walrus-ui:
         groupOrder:
         - Basic

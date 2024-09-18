@@ -6,11 +6,7 @@ components:
     variables:
       type: object
       required:
-      - dash_domain_name
-      - domain_name
-      - environment
       - harbor_admin_password
-      - namespace
       properties:
         release_name:
           title: Release Name
@@ -20,10 +16,11 @@ components:
           x-walrus-ui:
             group: Basic
             order: 1
-        namespace:
-          title: Namespace
+        namespace_name:
+          title: Namespace Name
           type: string
           description: The namespace where the Helm release will be installed.
+          default: harbor-system
           x-walrus-ui:
             group: Basic
             order: 2
@@ -47,24 +44,19 @@ components:
         domain_name:
           title: Domain Name
           type: string
-          description: domain name for Harbor, e.g. 'domainname.com'
+          description: domain name for Harbor, e.g. 'dev.domainname.com'
+          default: dev.domainname.com
           x-walrus-ui:
             group: Basic
             order: 5
         dash_domain_name:
           title: Dash Domain Name
           type: string
-          description: domain name with dash, e.g. 'domainname-com'
+          description: domain name with dash, e.g. 'dev-domainname-com'
+          default: dev-domainname-com
           x-walrus-ui:
             group: Basic
             order: 6
-        environment:
-          title: Environment
-          type: string
-          description: environment name, e.g. 'dev', 'stg' or 'prod'
-          x-walrus-ui:
-            group: Basic
-            order: 7
       x-walrus-ui:
         groupOrder:
         - Basic

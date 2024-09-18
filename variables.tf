@@ -8,7 +8,7 @@ variable "release_name" {
   default     = "harbor"
 }
 
-variable "namespace" {
+variable "namespace_name" {
   description = "The namespace where the Helm release will be installed."
   type        = string
   default     = "harbor-system"
@@ -32,18 +32,14 @@ variable "harbor_admin_password" {
 
 variable "domain_name" {
   type        = string
-  description = "domain name for Harbor, e.g. 'domainname.com'"
+  description = "domain name for Harbor, e.g. 'dev.domainname.com'"
+  default     = "dev.domainname.com"
 }
 
 variable "dash_domain_name" {
   type        = string
-  description = "domain name with dash, e.g. 'domainname-com'"
-}
-
-variable "environment" {
-  type        = string
-  description = "environment name, e.g. 'dev', 'stg' or 'prod'"
-  default     = "dev"
+  description = "domain name with dash, e.g. 'dev-domainname-com'"
+  default     = "dev-domainname-com"
 }
 
 #

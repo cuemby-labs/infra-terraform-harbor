@@ -1,11 +1,20 @@
 # Awesome Walrus Template
 
-Start here to create an awesome Walrus template.
+Terraform module which deploys Harbor on any kubernetes cluster.
 
 ## Usage
 
 ```hcl
+module "harbor" {
+  source              = "./modules/harbor" # Path to the Harbor module
 
+  release_name        = var.release_name          # The name of the Helm release.
+  namespace_name      = var.namespace_name        # The namespace where Harbor will be installed.
+  chart_version       = var.chart_version         # The version of the Harbor Helm chart to be used.
+  harbor_admin_password = var.harbor_admin_password # Admin password for Harbor.
+  domain_name         = var.domain_name           # Domain name for Harbor, e.g., 'dev.domainname.com'.
+  dash_domain_name    = var.dash_domain_name      # Domain name with dashes, e.g., 'dev-domainname-com'.
+}
 ```
 
 ## Examples
@@ -22,21 +31,28 @@ Please read our [contributing guide](./docs/CONTRIBUTING.md) if you're intereste
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.23.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.11.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | >= 1.5.7 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.23.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.11.0 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_submodule"></a> [submodule](#module\_submodule) | ./modules/submodule | n/a |
+No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [kubernetes_namespace.example](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [helm_release.example](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 
 ## Inputs
 
@@ -48,7 +64,7 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_submodule"></a> [submodule](#output\_submodule) | The message from submodule. |
+| <a name="output_harbor_external_url"></a> [harbor\_external\_url](#output\_harbor\_external\_url) | The external URL for Harbor. |
 | <a name="output_walrus_environment_id"></a> [walrus\_environment\_id](#output\_walrus\_environment\_id) | The id of environment where deployed in Walrus. |
 | <a name="output_walrus_environment_name"></a> [walrus\_environment\_name](#output\_walrus\_environment\_name) | The name of environment where deployed in Walrus. |
 | <a name="output_walrus_project_id"></a> [walrus\_project\_id](#output\_walrus\_project\_id) | The id of project where deployed in Walrus. |

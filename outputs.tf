@@ -31,3 +31,11 @@ output "walrus_resource_id" {
   value       = try(local.context["resource"]["id"], null)
   description = "The id of resource where deployed in Walrus."
 }
+
+#
+# Harbor information
+#
+
+output "external_url" {
+  value = "https://harbor.${var.domain_name}"
+}

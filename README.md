@@ -58,7 +58,12 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br><br>Examples:<pre>context:<br>  project:<br>    name: string<br>    id: string<br>  environment:<br>    name: string<br>    id: string<br>  resource:<br>    name: string<br>    id: string</pre> | `map(any)` | `{}` | no |
+| <a name="input_namespace_name"></a> [namespace_name](#input_namespace_name) | Namespace where Harbor will be installed. | string | "harbor-system" | no |
+| <a name="input_helm_release_name"></a> [helm_release_name](#input_helm_release_name) | Name for the Harbor Helm release. | string | "harbor" | no |
+| <a name="input_helm_chart_version"></a> [helm_chart_version](#input_helm_chart_version) | Version of the Harbor Helm chart. | string | "1.15.0" | no |
+| <a name="input_harbor_admin_password"></a> [harbor_admin_password](#input_harbor_admin_password) | Admin password for Harbor. | string sensitive | no | yes |
+| <a name="input_domain_name"></a> [domain_name](#input_helm_domain_name) | domain name for Harbor, e.g. 'dev.domainname.com'. | string | no | yes |
+| <a name="input_dash_domain_name"></a> [dash_domain_name](#input_dash_domain_name) | domain name with dash, e.g. 'dev-domainname-com'. | string | no | yes |
 
 ## Outputs
 

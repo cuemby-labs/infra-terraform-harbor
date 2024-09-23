@@ -42,6 +42,18 @@ variable "dash_domain_name" {
   default     = "dev-domainname-com"
 }
 
+variable "issuer_name" {
+  type        = string
+  description = "origin issuer name"
+  default     = "origin-ca-issuer"
+}
+
+variable "issuer_kind" {
+  type        = string
+  description = "origin issuer kind"
+  default     = "OriginIssuer"
+}
+
 #
 # Walrus Contextual Fields
 #

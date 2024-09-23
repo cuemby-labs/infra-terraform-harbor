@@ -22,6 +22,8 @@ resource "helm_release" "harbor" {
       harbor_admin_password = var.harbor_admin_password,
       domain_name           = var.domain_name,
       dash_domain_name      = var.dash_domain_name
+      issuer_name           = var.issuer_name
+      issuer_kind           = var.issuer_kind
     })
   ]
 }

@@ -60,7 +60,7 @@ components:
         issuer_name:
           title: Issuer Name
           type: string
-          description: origin issuer name
+          description: 'origin issuer name for annotation cert-manager.io/issuer:'
           default: origin-ca-issuer
           x-walrus-ui:
             group: Basic
@@ -68,8 +68,8 @@ components:
         issuer_kind:
           title: Issuer Kind
           type: string
-          description: origin issuer kind
-          default: OriginIssuer
+          description: 'origin issuer kind for annotation cert-manager.io/issuer-kind:'
+          default: ClusterOriginIssuer
           x-walrus-ui:
             group: Basic
             order: 8

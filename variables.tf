@@ -44,14 +44,14 @@ variable "dash_domain_name" {
 
 variable "issuer_name" {
   type        = string
-  description = "origin issuer name"
+  description = "origin issuer name for annotation cert-manager.io/issuer:"
   default     = "origin-ca-issuer"
 }
 
 variable "issuer_kind" {
   type        = string
-  description = "origin issuer kind"
-  default     = "OriginIssuer"
+  description = "origin issuer kind for annotation cert-manager.io/issuer-kind:"
+  default     = "ClusterOriginIssuer"
 }
 
 #

@@ -1,4 +1,4 @@
-# Awesome Walrus Template
+# Harbor Template
 
 Terraform module which deploys Harbor on any kubernetes cluster.
 

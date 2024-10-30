@@ -2,7 +2,7 @@
 # Harbor variables
 #
 
-variable "release_name" {
+variable "helm_release_name" {
   description = "The name of the Helm release."
   type        = string
   default     = "harbor"
@@ -14,7 +14,7 @@ variable "namespace_name" {
   default     = "harbor-system"
 }
 
-variable "chart_version" {
+variable "helm_chart_version" {
   description = "The version of the ingress-nginx Helm chart."
   type        = string
   default     = "1.15.0"

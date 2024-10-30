@@ -6,14 +6,14 @@ Terraform module which deploys Harbor on any kubernetes cluster.
 
 ```hcl
 module "harbor" {
-  source                = "./modules/harbor"        # Path to the Harbor module
+  source                = "./modules/harbor"     # Path to the Harbor module
 
-  release_name          = var.release_name          # The name of the Helm release.
-  namespace_name        = var.namespace_name        # The namespace where Harbor will be installed.
-  chart_version         = var.chart_version         # The version of the Harbor Helm chart to be used.
-  harbor_admin_password = var.harbor_admin_password # Admin password for Harbor.
-  domain_name           = var.domain_name           # Domain name for Harbor, e.g., 'dev.domainname.com'.
-  dash_domain_name      = var.dash_domain_name      # Domain name with dashes, e.g., 'dev-domainname-com'.
+  helm_release_name     = "harbor"               # The name of the Helm release.
+  namespace_name        = "harbor-system"        # The namespace where Harbor will be installed.
+  helm_chart_version    = "1.15.0"               # The version of the Harbor Helm chart to be used.
+  harbor_admin_password = "admin_password"       # Admin password for Harbor.
+  domain_name           = "dev.domainname.com"   # Domain name for Harbor, e.g., 'dev.domainname.com'.
+  dash_domain_name      = "dev-domainname-com"   # Domain name with dashes, e.g., 'dev-domainname-com'.
 }
 ```
 

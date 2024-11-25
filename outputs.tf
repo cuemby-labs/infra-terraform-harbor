@@ -37,7 +37,8 @@ output "walrus_resource_id" {
 #
 
 output "external_url" {
-  value = "https://harbor.${var.domain_name}"
+  description = "URL for Harbor"
+  value       = "https://harbor.${var.domain_name}"
 }
 
 #

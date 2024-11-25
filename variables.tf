@@ -27,7 +27,8 @@ variable "helm_chart_version" {
 variable "harbor_admin_password" {
   type        = string
   description = "Admin password for Harbor"
-  sensitive   = true 
+  sensitive   = true
+  default     = ""
 }
 
 variable "domain_name" {

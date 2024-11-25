@@ -27,9 +27,15 @@ resource "helm_release" "harbor" {
 }
 
 #
-# Walrus information
+# Walrus Information
 #
 
 locals {
   context = var.context
+}
+
+module "submodule" {
+  source = "./modules/submodule"
+
+  message = "Hello, submodule"
 }

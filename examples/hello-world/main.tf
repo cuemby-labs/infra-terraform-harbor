@@ -3,7 +3,7 @@ terraform {
 }
 
 module "this" {
-  source = ".."
+  source = "../.."
 
   context = {
     project = {

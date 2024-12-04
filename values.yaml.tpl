@@ -32,7 +32,7 @@ harborAdminPassword: ${harbor_admin_password}
 portal:
   resources:
     limits:
-      cpu: ${jportal_limits_cpu}
+      cpu: ${portal_limits_cpu}
       memory: ${portal_limits_memory}
     requests:
       cpu: ${portal_request_cpu}

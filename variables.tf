@@ -15,9 +15,96 @@ variable "namespace_name" {
 }
 
 variable "helm_chart_version" {
-  description = "The version of the ingress-nginx Helm chart."
+  description = "The version of the Helm chart."
   type        = string
-  default     = "1.15.0"
+  default     = "1.16.0"
+}
+
+variable "resources" {
+  description = "Resource limits and requests for Harbor Helm release."
+  type        = map(object({
+    limits = object({
+      cpu    = string
+      memory = string
+    })
+    requests = object({
+      cpu    = string
+      memory = string
+    })
+  }))
+
+  default = {
+    portal = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    jobservice = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    registry = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    trivy = {
+      limits = {
+        cpu    = "1000m"
+        memory = "1Gi"
+      }
+      requests = {
+        cpu    = "200m"
+        memory = "512Mi"
+      }
+    }
+    redis = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    database = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    core = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+  }
 }
 
 #

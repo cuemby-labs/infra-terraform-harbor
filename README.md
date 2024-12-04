@@ -14,6 +14,79 @@ module "harbor" {
   harbor_admin_password = "admin_password"       # Admin password for Harbor.
   domain_name           = "dev.domainname.com"   # Domain name for Harbor, e.g., 'dev.domainname.com'.
   dash_domain_name      = "dev-domainname-com"   # Domain name with dashes, e.g., 'dev-domainname-com'.
+
+  resources = {
+    portal = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    jobservice = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    registry = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    trivy = {
+      limits = {
+        cpu    = "1000m"
+        memory = "1Gi"
+      }
+      requests = {
+        cpu    = "200m"
+        memory = "512Mi"
+      }
+    }
+    redis = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    database = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+    core = {
+      limits = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+      requests = {
+        cpu    = "100m"
+        memory = "256Mi"
+      }
+    }
+  }
 }
 ```
 
@@ -64,6 +137,7 @@ No modules.
 | <a name="input_harbor_admin_password"></a> [harbor_admin_password](#input_harbor_admin_password) | Admin password for Harbor. | string sensitive | no | yes |
 | <a name="input_domain_name"></a> [domain_name](#input_helm_domain_name) | domain name for Harbor, e.g. 'dev.domainname.com'. | string | no | yes |
 | <a name="input_dash_domain_name"></a> [dash_domain_name](#input_dash_domain_name) | domain name with dash, e.g. 'dev-domainname-com'. | string | no | yes |
+| <a name="input_resources"></a> [resources](#input_resources) | Resource limits and requests for Cert-Manager pods. | `map(object(string))` | `"See example"` | no |
 
 ## Outputs
 

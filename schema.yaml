@@ -1,15 +1,13 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for Harbor template.
+  title: OpenAPI schema Harbor for template .
 components:
   schemas:
     variables:
       type: object
-      required:
-      - harbor_admin_password
       properties:
-        release_name:
-          title: Release Name
+        helm_release_name:
+          title: Helm Release Name
           type: string
           description: The name of the Helm release.
           default: harbor
@@ -24,23 +22,130 @@ components:
           x-walrus-ui:
             group: Basic
             order: 2
-        chart_version:
-          title: Chart Version
+        helm_chart_version:
+          title: Helm Chart Version
           type: string
-          description: The version of the ingress-nginx Helm chart.
-          default: 1.15.0
+          description: The version of the Helm chart.
+          default: 1.16.0
           x-walrus-ui:
             group: Basic
             order: 3
+        resources:
+          title: Resources
+          type: object
+          description: Resource limits and requests for Harbor Helm release.
+          default:
+            core:
+              limits:
+                cpu: 100m
+                memory: 256Mi
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            database:
+              limits:
+                cpu: 100m
+                memory: 256Mi
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            jobservice:
+              limits:
+                cpu: 100m
+                memory: 256Mi
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            portal:
+              limits:
+                cpu: 100m
+                memory: 256Mi
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            redis:
+              limits:
+                cpu: 100m
+                memory: 256Mi
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            registry:
+              limits:
+                cpu: 100m
+                memory: 256Mi
+              requests:
+                cpu: 100m
+                memory: 256Mi
+            trivy:
+              limits:
+                cpu: 1000m
+                memory: 1Gi
+              requests:
+                cpu: 200m
+                memory: 512Mi
+          additionalProperties:
+            properties:
+              limits:
+                properties:
+                  cpu:
+                    title: Cpu
+                    type: string
+                    x-walrus-ui:
+                      order: 1
+                  memory:
+                    title: Memory
+                    type: string
+                    x-walrus-ui:
+                      order: 2
+                required:
+                - cpu
+                - memory
+                title: Limits
+                type: object
+                x-walrus-ui:
+                  colSpan: 12
+                  order: 1
+              requests:
+                properties:
+                  cpu:
+                    title: Cpu
+                    type: string
+                    x-walrus-ui:
+                      order: 1
+                  memory:
+                    title: Memory
+                    type: string
+                    x-walrus-ui:
+                      order: 2
+                required:
+                - cpu
+                - memory
+                title: Requests
+                type: object
+                x-walrus-ui:
+                  colSpan: 12
+                  order: 2
+            required:
+            - limits
+            - requests
+            type: object
+            x-walrus-ui:
+              colSpan: 12
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 4
         harbor_admin_password:
           title: Harbor Admin Password
           type: string
           description: Admin password for Harbor
+          default: ""
           format: password
           writeOnly: true
           x-walrus-ui:
             group: Basic
-            order: 4
+            order: 5
         domain_name:
           title: Domain Name
           type: string
@@ -48,7 +153,7 @@ components:
           default: dev.domainname.com
           x-walrus-ui:
             group: Basic
-            order: 5
+            order: 6
         dash_domain_name:
           title: Dash Domain Name
           type: string
@@ -56,7 +161,7 @@ components:
           default: dev-domainname-com
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 7
         issuer_name:
           title: Issuer Name
           type: string
@@ -64,7 +169,7 @@ components:
           default: origin-ca-issuer
           x-walrus-ui:
             group: Basic
-            order: 7
+            order: 8
         issuer_kind:
           title: Issuer Kind
           type: string
@@ -72,7 +177,7 @@ components:
           default: ClusterOriginIssuer
           x-walrus-ui:
             group: Basic
-            order: 8
+            order: 9
       x-walrus-ui:
         groupOrder:
         - Basic

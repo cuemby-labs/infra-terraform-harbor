@@ -81,6 +81,7 @@ database:
         cpu: ${database_request_cpu}
         memory: ${database_request_memory}
 core:
+  replicas: 2
   resources:
     limits:
       cpu: ${core_limits_cpu}

@@ -138,12 +138,6 @@ variable "domain_name" {
   default     = "dev.domainname.com"
 }
 
-variable "dash_domain_name" {
-  type        = string
-  description = "domain name with dash, e.g. 'dev-domainname-com'"
-  default     = "dev-domainname-com"
-}
-
 variable "issuer_name" {
   type        = string
   description = "origin issuer name for annotation cert-manager.io/issuer:"

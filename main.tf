@@ -19,7 +19,7 @@ resource "helm_release" "harbor" {
     templatefile("${path.module}/values.yaml.tpl", {
       harbor_admin_password     = var.harbor_admin_password,
       domain_name               = var.domain_name,
-      dash_domain_name          = var.dash_domain_name,
+      dash_domain_name          = local.dash_domain_name,
       issuer_name               = var.issuer_name,
       issuer_kind               = var.issuer_kind,
       portal_request_memory     = var.resources["portal"]["requests"]["memory"],
@@ -66,7 +66,8 @@ resource "helm_release" "harbor" {
 #
 
 locals {
-  context = var.context
+  context          = var.context
+  dash_domain_name = replace(var.domain_name, ".", "-")
 }
 
 module "submodule" {

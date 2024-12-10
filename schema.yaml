@@ -39,7 +39,6 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
-              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -47,7 +46,6 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
-              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -55,7 +53,6 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
-              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -63,7 +60,6 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
-              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -71,7 +67,6 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
-              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -79,7 +74,6 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
-              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -87,7 +81,6 @@ components:
               limits:
                 cpu: 1000m
                 memory: 1Gi
-              replicas: 1
               requests:
                 cpu: 200m
                 memory: 512Mi
@@ -143,6 +136,24 @@ components:
             colSpan: 12
             group: Basic
             order: 4
+        replicas:
+          title: Replicas
+          type: object
+          description: Replicas for Harbor pods.
+          default:
+            core: 1
+            database: 1
+            jobservice: 1
+            portal: 1
+            redis: 1
+            registry: 1
+            trivy: 1
+          additionalProperties:
+            type: number
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 5
         harbor_admin_password:
           title: Harbor Admin Password
           type: string
@@ -152,7 +163,7 @@ components:
           writeOnly: true
           x-walrus-ui:
             group: Basic
-            order: 5
+            order: 6
         domain_name:
           title: Domain Name
           type: string
@@ -160,7 +171,7 @@ components:
           default: dev.domainname.com
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 7
         dash_domain_name:
           title: Dash Domain Name
           type: string
@@ -168,7 +179,7 @@ components:
           default: dev-domainname-com
           x-walrus-ui:
             group: Basic
-            order: 7
+            order: 8
         issuer_name:
           title: Issuer Name
           type: string
@@ -176,7 +187,7 @@ components:
           default: origin-ca-issuer
           x-walrus-ui:
             group: Basic
-            order: 8
+            order: 9
         issuer_kind:
           title: Issuer Kind
           type: string
@@ -184,7 +195,7 @@ components:
           default: ClusterOriginIssuer
           x-walrus-ui:
             group: Basic
-            order: 9
+            order: 10
       x-walrus-ui:
         groupOrder:
         - Basic

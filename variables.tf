@@ -43,7 +43,6 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
-      replicas = 1
     }
     jobservice = {
       limits = {
@@ -54,7 +53,6 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
-      replicas = 1
     }
     registry = {
       limits = {
@@ -65,7 +63,6 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
-      replicas = 1
     }
     trivy = {
       limits = {
@@ -76,7 +73,6 @@ variable "resources" {
         cpu    = "200m"
         memory = "512Mi"
       }
-      replicas = 1
     }
     redis = {
       limits = {
@@ -87,7 +83,6 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
-      replicas = 1
     }
     database = {
       limits = {
@@ -98,7 +93,6 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
-      replicas = 1
     }
     core = {
       limits = {
@@ -109,8 +103,21 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
-      replicas = 1
     }
+  }
+}
+
+variable "replicas" {
+  description = "Replicas for Harbor pods."
+  type        = map(number)
+  default = {
+    portal     = 1
+    jobservice = 1
+    registry   = 1
+    trivy      = 1
+    redis      = 1
+    database   = 1
+    core       = 1
   }
 }
 

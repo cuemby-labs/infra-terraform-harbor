@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for Harbor template .
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
@@ -172,14 +172,6 @@ components:
           x-walrus-ui:
             group: Basic
             order: 7
-        dash_domain_name:
-          title: Dash Domain Name
-          type: string
-          description: domain name with dash, e.g. 'dev-domainname-com'
-          default: dev-domainname-com
-          x-walrus-ui:
-            group: Basic
-            order: 8
         issuer_name:
           title: Issuer Name
           type: string
@@ -187,7 +179,7 @@ components:
           default: origin-ca-issuer
           x-walrus-ui:
             group: Basic
-            order: 9
+            order: 8
         issuer_kind:
           title: Issuer Kind
           type: string
@@ -195,7 +187,7 @@ components:
           default: ClusterOriginIssuer
           x-walrus-ui:
             group: Basic
-            order: 10
+            order: 9
       x-walrus-ui:
         groupOrder:
         - Basic

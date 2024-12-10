@@ -43,6 +43,7 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
+      replicas = 1
     }
     jobservice = {
       limits = {
@@ -53,6 +54,7 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
+      replicas = 1
     }
     registry = {
       limits = {
@@ -63,6 +65,7 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
+      replicas = 1
     }
     trivy = {
       limits = {
@@ -73,6 +76,7 @@ variable "resources" {
         cpu    = "200m"
         memory = "512Mi"
       }
+      replicas = 1
     }
     redis = {
       limits = {
@@ -83,6 +87,7 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
+      replicas = 1
     }
     database = {
       limits = {
@@ -93,6 +98,7 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
+      replicas = 1
     }
     core = {
       limits = {
@@ -103,6 +109,7 @@ variable "resources" {
         cpu    = "100m"
         memory = "256Mi"
       }
+      replicas = 1
     }
   }
 }

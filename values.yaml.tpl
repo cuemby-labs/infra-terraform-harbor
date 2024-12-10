@@ -30,6 +30,7 @@ expose:
 externalURL: https://harbor.${domain_name}
 harborAdminPassword: ${harbor_admin_password}
 portal:
+  replicas: ${portal_replicas}
   resources:
     limits:
       cpu: ${portal_limits_cpu}
@@ -38,6 +39,7 @@ portal:
       cpu: ${portal_request_cpu}
       memory: ${portal_request_memory}
 jobservice:
+  replicas: ${jobservice_replicas}
   resources:
     limits:
       cpu: ${jobservice_limits_cpu}
@@ -46,6 +48,7 @@ jobservice:
       cpu: ${jobservice_request_cpu}
       memory: ${jobservice_request_memory}
 registry:
+  replicas: ${registry_replicas}
   registry:
     resources:
       limits:
@@ -55,6 +58,7 @@ registry:
         cpu: ${registry_request_cpu}
         memory: ${registry_request_memory}
 trivy:
+  replicas: ${trivy_replicas}
   resources:
     limits:
       cpu: ${trivy_limits_cpu}
@@ -63,6 +67,7 @@ trivy:
       cpu: ${trivy_request_cpu}
       memory: ${trivy_request_memory}
 redis:
+  replicas: ${redis_replicas}
   internal:
     resources:
       limits:
@@ -72,6 +77,7 @@ redis:
         cpu: ${redis_request_cpu}
         memory: ${redis_request_memory}
 database:
+  replicas: ${database_replicas}
   internal:
     resources:
       limits:
@@ -81,7 +87,7 @@ database:
         cpu: ${database_request_cpu}
         memory: ${database_request_memory}
 core:
-  replicas: 2
+  replicas: ${core_replicas}
   resources:
     limits:
       cpu: ${core_limits_cpu}

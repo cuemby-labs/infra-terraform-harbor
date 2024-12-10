@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema Harbor for template .
+  title: OpenAPI schema for Harbor template .
 components:
   schemas:
     variables:
@@ -39,6 +39,7 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
+              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -46,6 +47,7 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
+              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -53,6 +55,7 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
+              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -60,6 +63,7 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
+              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -67,6 +71,7 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
+              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -74,6 +79,7 @@ components:
               limits:
                 cpu: 100m
                 memory: 256Mi
+              replicas: 1
               requests:
                 cpu: 100m
                 memory: 256Mi
@@ -81,6 +87,7 @@ components:
               limits:
                 cpu: 1000m
                 memory: 1Gi
+              replicas: 1
               requests:
                 cpu: 200m
                 memory: 512Mi

@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template .
+  title: OpenAPI schema for Harbor template .
 components:
   schemas:
     variables:
@@ -148,8 +148,50 @@ components:
             redis: 1
             registry: 1
             trivy: 1
-          additionalProperties:
-            type: number
+          required:
+          - core
+          - database
+          - jobservice
+          - portal
+          - redis
+          - registry
+          - trivy
+          properties:
+            core:
+              title: Core
+              type: number
+              x-walrus-ui:
+                order: 7
+            database:
+              title: Database
+              type: number
+              x-walrus-ui:
+                order: 6
+            jobservice:
+              title: Jobservice
+              type: number
+              x-walrus-ui:
+                order: 2
+            portal:
+              title: Portal
+              type: number
+              x-walrus-ui:
+                order: 1
+            redis:
+              title: Redis
+              type: number
+              x-walrus-ui:
+                order: 5
+            registry:
+              title: Registry
+              type: number
+              x-walrus-ui:
+                order: 3
+            trivy:
+              title: Trivy
+              type: number
+              x-walrus-ui:
+                order: 4
           x-walrus-ui:
             colSpan: 12
             group: Basic
@@ -162,10 +204,12 @@ components:
             max_replicas: 5
             min_replicas: 1
             target_cpu_utilization: 80
+            target_memory_utilization: 80
           required:
           - max_replicas
           - min_replicas
           - target_cpu_utilization
+          - target_memory_utilization
           properties:
             max_replicas:
               title: Max Replicas
@@ -182,6 +226,11 @@ components:
               type: number
               x-walrus-ui:
                 order: 3
+            target_memory_utilization:
+              title: Target Memory Utilization
+              type: number
+              x-walrus-ui:
+                order: 4
           x-walrus-ui:
             colSpan: 12
             group: Basic

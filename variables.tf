@@ -109,8 +109,15 @@ variable "resources" {
 
 variable "replicas" {
   description = "Replicas for Harbor pods."
-  type        = map(number)
-
+  type        = object({
+    portal     = number
+    jobservice = number
+    registry   = number
+    trivy      = number
+    redis      = number
+    database   = number
+    core       = number
+  })
   default = {
     portal     = 1
     jobservice = 1
@@ -128,14 +135,14 @@ variable "hpa_core_config" {
     min_replicas              = number
     max_replicas              = number
     target_cpu_utilization    = number
-    # target_memory_utilization = number
+    target_memory_utilization = number
   })
 
   default = {
     min_replicas              = 1
     max_replicas              = 5
     target_cpu_utilization    = 80
-    # target_memory_utilization = 80
+    target_memory_utilization = 80
   }
 }
 

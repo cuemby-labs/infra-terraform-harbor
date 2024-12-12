@@ -93,16 +93,16 @@ resource "kubernetes_horizontal_pod_autoscaler" "core" {
       }
     }
 
-    # metric {
-    #   type = "Resource"
-    #   resource {
-    #     name  = "memory"
-    #     target {
-    #       type                = "Utilization"
-    #       average_utilization = var.hpa_core_config.target_memory_utilization
-    #     }
-    #   }
-    # }
+    metric {
+      type = "Resource"
+      resource {
+        name  = "memory"
+        target {
+          type                = "Utilization"
+          average_utilization = var.hpa_core_config.target_memory_utilization
+        }
+      }
+    }
   }
 }
 

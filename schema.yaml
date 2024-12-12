@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for Harbor template .
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
@@ -171,22 +171,22 @@ components:
           properties:
             max_replicas:
               title: Max Replicas
-              type: string
+              type: number
               x-walrus-ui:
                 order: 2
             min_replicas:
               title: Min Replicas
-              type: string
+              type: number
               x-walrus-ui:
                 order: 1
             target_cpu_utilization:
               title: Target Cpu Utilization
-              type: string
+              type: number
               x-walrus-ui:
                 order: 3
             target_memory_utilization:
               title: Target Memory Utilization
-              type: string
+              type: number
               x-walrus-ui:
                 order: 4
           x-walrus-ui:

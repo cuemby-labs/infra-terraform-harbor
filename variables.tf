@@ -125,10 +125,10 @@ variable "replicas" {
 variable "hpa_core_config" {
   description = "Configuration for the HPA targeting the Harbor core Deployment"
   type        = object({
-    min_replicas              = number
-    max_replicas              = number
-    target_cpu_utilization    = number
-    target_memory_utilization = number
+    min_replicas              = string
+    max_replicas              = string
+    target_cpu_utilization    = string
+    target_memory_utilization = string
   })
 
   default = {

@@ -65,46 +65,70 @@ resource "helm_release" "harbor" {
 # Harbor HPA
 #
 
-# HPA for Core Component
-resource "kubernetes_horizontal_pod_autoscaler" "core" {
-  metadata {
-    name      = "${helm_release.harbor.name}-core-hpa"
-    namespace = var.namespace_name
-  }
-
-  spec {
-    scale_target_ref {
-      kind       = "Deployment"
-      name       = "${helm_release.harbor.name}-core"
-      api_version = "apps/v1"
-    }
-
-    min_replicas = var.hpa_core_config.min_replicas
-    max_replicas = var.hpa_core_config.max_replicas
-
-    metric {
-      type = "Resource"
-      resource {
-        name  = "cpu"
-        target {
-          type                = "Utilization"
-          average_utilization = var.hpa_core_config.target_cpu_utilization
-        }
-      }
-    }
-
-    metric {
-      type = "Resource"
-      resource {
-        name  = "memory"
-        target {
-          type                = "Utilization"
-          average_utilization = var.hpa_core_config.target_memory_utilization
-        }
-      }
-    }
+data "template_file" "hpa_manifest_template" {
+  
+  template = file("${path.module}/hpa.yaml.tpl")
+  vars     = {
+    namespace_name                 = var.namespace_name,
+    core_name_metadata             = "${helm_release.harbor.name}-core-hpa",
+    core_name_deployment           = "${helm_release.harbor.name}-core",
+    core_min_replicas              = var.hpa_core_config.min_replicas,
+    core_max_replicas              = var.hpa_core_config.max_replicas,
+    core_target_cpu_utilization    = var.hpa_core_config.target_cpu_utilization,
+    core_target_memory_utilization = var.hpa_core_config.target_memory_utilization
   }
 }
+
+data "kubectl_file_documents" "hpa_manifest_files" {
+
+  content = data.template_file.hpa_manifest_template.rendered
+}
+
+resource "kubectl_manifest" "apply_manifests" {
+  for_each  = data.kubectl_file_documents.hpa_manifest_files.manifests
+  yaml_body = each.value
+}
+
+# HPA for Core Component
+# resource "kubernetes_horizontal_pod_autoscaler" "core" {
+#   metadata {
+#     name      = "${helm_release.harbor.name}-core-hpa"
+#     namespace = var.namespace_name
+#   }
+
+#   spec {
+#     scale_target_ref {
+#       kind       = "Deployment"
+#       name       = "${helm_release.harbor.name}-core"
+#       api_version = "apps/v1"
+#     }
+
+#     min_replicas = var.hpa_core_config.min_replicas
+#     max_replicas = var.hpa_core_config.max_replicas
+
+#     metric {
+#       type = "Resource"
+#       resource {
+#         name  = "cpu"
+#         target {
+#           type                = "Utilization"
+#           average_utilization = var.hpa_core_config.target_cpu_utilization
+#         }
+#       }
+#     }
+
+#     metric {
+#       type = "Resource"
+#       resource {
+#         name  = "memory"
+#         target {
+#           type                = "Utilization"
+#           average_utilization = var.hpa_core_config.target_memory_utilization
+#         }
+#       }
+#     }
+#   }
+# }
 
 # HPA for Jobservice Component
 # resource "kubernetes_horizontal_pod_autoscaler" "jobservice" {

@@ -62,6 +62,122 @@ resource "helm_release" "harbor" {
 }
 
 #
+# Harbor HPA
+#
+
+# HPA for Core Component
+resource "kubernetes_horizontal_pod_autoscaler" "core" {
+  metadata {
+    name      = "${helm_release.harbor.name}-core-hpa"
+    namespace = var.namespace_name
+  }
+
+  spec {
+    scale_target_ref {
+      kind       = "Deployment"
+      name       = "${helm_release.harbor.name}-core"
+      api_version = "apps/v1"
+    }
+
+    min_replicas = var.hpa_core_config.min_replicas
+    max_replicas = var.hpa_core_config.max_replicas
+
+    metric {
+      type = "Resource"
+      resource {
+        name  = "cpu"
+        target {
+          type                = "Utilization"
+          average_utilization = var.hpa_core_config.target_cpu_utilization
+        }
+      }
+    }
+
+    metric {
+      type = "Resource"
+      resource {
+        name  = "memory"
+        target {
+          type                = "Utilization"
+          average_utilization = var.hpa_core_config.target_memory_utilization
+        }
+      }
+    }
+  }
+}
+
+# HPA for Jobservice Component
+# resource "kubernetes_horizontal_pod_autoscaler" "jobservice" {
+#   metadata {
+#     name      = "jobservice-hpa"
+#     namespace = var.namespace_name
+#   }
+
+#   spec {
+#     scale_target_ref {
+#       kind       = "Deployment"
+#       name       = "${helm_release.harbor.name}-jobservice"
+#       api_version = "apps/v1"
+#     }
+
+#     min_replicas = 1
+#     max_replicas = 5
+
+#     metric {
+#       type = "Resource"
+#       resource {
+#         name  = "memory"
+#         target {
+#           type               = "Utilization"
+#           average_utilization = 70
+#         }
+#       }
+#     }
+#   }
+# }
+
+# # HPA for Portal Component
+# resource "kubernetes_horizontal_pod_autoscaler" "portal" {
+#   metadata {
+#     name      = "portal-hpa"
+#     namespace = var.namespace_name
+#   }
+
+#   spec {
+#     scale_target_ref {
+#       kind       = "Deployment"
+#       name       = "${helm_release.harbor.name}-portal"
+#       api_version = "apps/v1"
+#     }
+
+#     min_replicas = 2
+#     max_replicas = 10
+
+#     metric {
+#       type = "Resource"
+#       resource {
+#         name  = "cpu"
+#         target {
+#           type               = "Utilization"
+#           average_utilization = 75
+#         }
+#       }
+#     }
+
+#     metric {
+#       type = "Resource"
+#       resource {
+#         name  = "memory"
+#         target {
+#           type               = "Utilization"
+#           average_utilization = 80
+#         }
+#       }
+#     }
+#   }
+# }
+
+#
 # Walrus Information
 #
 

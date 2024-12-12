@@ -154,6 +154,45 @@ components:
             colSpan: 12
             group: Basic
             order: 5
+        hpa_core_config:
+          title: Hpa Core Config
+          type: object
+          description: Configuration for the HPA targeting the Harbor core Deployment
+          default:
+            max_replicas: 5
+            min_replicas: 1
+            target_cpu_utilization: 80
+            target_memory_utilization: 80
+          required:
+          - max_replicas
+          - min_replicas
+          - target_cpu_utilization
+          - target_memory_utilization
+          properties:
+            max_replicas:
+              title: Max Replicas
+              type: number
+              x-walrus-ui:
+                order: 2
+            min_replicas:
+              title: Min Replicas
+              type: number
+              x-walrus-ui:
+                order: 1
+            target_cpu_utilization:
+              title: Target Cpu Utilization
+              type: number
+              x-walrus-ui:
+                order: 3
+            target_memory_utilization:
+              title: Target Memory Utilization
+              type: number
+              x-walrus-ui:
+                order: 4
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 6
         harbor_admin_password:
           title: Harbor Admin Password
           type: string
@@ -163,7 +202,7 @@ components:
           writeOnly: true
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 7
         domain_name:
           title: Domain Name
           type: string
@@ -171,7 +210,7 @@ components:
           default: dev.domainname.com
           x-walrus-ui:
             group: Basic
-            order: 7
+            order: 8
         issuer_name:
           title: Issuer Name
           type: string
@@ -179,7 +218,7 @@ components:
           default: origin-ca-issuer
           x-walrus-ui:
             group: Basic
-            order: 8
+            order: 9
         issuer_kind:
           title: Issuer Kind
           type: string
@@ -187,7 +226,7 @@ components:
           default: ClusterOriginIssuer
           x-walrus-ui:
             group: Basic
-            order: 9
+            order: 10
       x-walrus-ui:
         groupOrder:
         - Basic

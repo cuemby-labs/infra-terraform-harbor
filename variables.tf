@@ -121,6 +121,22 @@ variable "replicas" {
   }
 }
 
+variable "hpa_core_config" {
+  description = "Configuration for the HPA targeting the Harbor core Deployment"
+  type        = object({
+    min_replicas              = number
+    max_replicas              = number
+    target_cpu_utilization    = number
+    target_memory_utilization = number
+  })
+  default = {
+    min_replicas          = 1
+    max_replicas          = 5
+    target_cpu_utilization = 80
+    target_memory_utilization = 80
+  }
+}
+
 #
 # Harbor manifest variables
 #

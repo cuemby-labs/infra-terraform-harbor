@@ -125,7 +125,6 @@ variable "replicas" {
 variable "hpa_core_config" {
   description = "Configuration for the HPA targeting the Harbor core Deployment"
   type        = object({
-    enabled                   = bool
     min_replicas              = number
     max_replicas              = number
     target_cpu_utilization    = number
@@ -133,7 +132,6 @@ variable "hpa_core_config" {
   })
 
   default = {
-    enabled                   = false
     min_replicas              = 1
     max_replicas              = 5
     target_cpu_utilization    = 80

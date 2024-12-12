@@ -51,12 +51,12 @@ resource "helm_release" "harbor" {
       database_limits_memory    = var.resources["database"]["limits"]["memory"],
       database_request_cpu      = var.resources["database"]["requests"]["cpu"],
       database_limits_cpu       = var.resources["database"]["limits"]["cpu"],
-      database_replicas         = var.var.replicas.database,
+      database_replicas         = var.replicas.database,
       core_request_memory       = var.resources["core"]["requests"]["memory"],
       core_limits_memory        = var.resources["core"]["limits"]["memory"],
       core_request_cpu          = var.resources["core"]["requests"]["cpu"],
       core_limits_cpu           = var.resources["core"]["limits"]["cpu"],
-      core_replicas             = var.var.replicas.core
+      core_replicas             = var.replicas.core
     })
   ]
 }

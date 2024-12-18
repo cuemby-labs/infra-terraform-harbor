@@ -66,12 +66,11 @@ resource "helm_release" "harbor" {
 #
 
 data "template_file" "hpa_manifest_template" {
-  
   template = file("${path.module}/hpa.yaml.tpl")
   vars     = {
     namespace_name                 = var.namespace_name,
-    core_name_metadata             = "${helm_release.harbor.name}-core-hpa",
-    core_name_deployment           = "${helm_release.harbor.name}-core",
+    core_name_metadata             = "${var.helm_release_name}-core-hpa",
+    core_name_deployment           = "${var.helm_release_name}-core",
     core_min_replicas              = var.hpa_core_config.min_replicas,
     core_max_replicas              = var.hpa_core_config.max_replicas,
     core_target_cpu_utilization    = var.hpa_core_config.target_cpu_utilization,
@@ -80,13 +79,18 @@ data "template_file" "hpa_manifest_template" {
 }
 
 data "kubectl_file_documents" "hpa_manifest_files" {
-
   content = data.template_file.hpa_manifest_template.rendered
 }
 
 resource "kubectl_manifest" "apply_manifests" {
   for_each  = data.kubectl_file_documents.hpa_manifest_files.manifests
   yaml_body = each.value
+
+  lifecycle {
+    ignore_changes = [yaml_body]
+  }
+
+  depends_on = [data.kubectl_file_documents.hpa_manifest_files]
 }
 
 #
